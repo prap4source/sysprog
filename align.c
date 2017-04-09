@@ -23,6 +23,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+extern char *__progname;
 void* aligned_malloc(size_t required_bytes, size_t alignment)
 {
     void* p1; // original block
@@ -45,6 +46,10 @@ void aligned_free(void *p)
 int  main (int argc, char *argv[])
 {
     char **endptr;
+    if (argc != 2) {
+	  printf("Usage %s <align>\n",__progname);
+	  return -1;
+    }
     int *p = aligned_malloc (100, strtol(argv[1], endptr, 10));
 
     printf ("%s: %p\n", argv[1], p);
