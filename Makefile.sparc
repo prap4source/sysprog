@@ -1,0 +1,14 @@
+all:    default aligned unaligned onebyte-aligned onebyte-unaligned
+default:        memalign.c
+	$(CC) -DALIGNED -o default memalign.c
+aligned:        memalign.c
+	$(CC) -DALIGNED -xmemalign=4i -o aligned memalign.c
+unaligned:      memalign.c
+	$(CC) -xmemalign=4i -o unaligned memalign.c
+onebyte-aligned:        memalign.c
+	$(CC) -DALIGNED -xmemalign=1s -o onebyte-aligned memalign.c
+onebyte-unaligned:      memalign.c
+	$(CC) -xmemalign=1s -o onebyte-unaligned memalign.c
+clean:
+	rm -rf default aligned unaligned onebyte-unaligned
+
