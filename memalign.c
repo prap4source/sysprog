@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+/* This Utility will determine how much size each alignment 
+ *   option takes ,Run this in Solaris
+ */
 
 typedef struct {
         int a;
