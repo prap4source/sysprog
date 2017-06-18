@@ -22,7 +22,7 @@ FILE *fptr;
 fptr = fopen(fileName,"rb+");
 
 if (!fptr) {
-  freopen(fileName, "wb", fptr);
+  fptr = fopen(fileName, "wb+");
 }
 
 if(fptr){

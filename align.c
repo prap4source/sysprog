@@ -33,6 +33,7 @@ void* aligned_malloc(size_t required_bytes, size_t alignment)
     {
        return NULL;
     }
+    printf ("memory add %p \n",p1);
     p2 = (void**)(((size_t)(p1) + offset) & ~(alignment - 1));
     p2[-1] = p1;
     return p2;
