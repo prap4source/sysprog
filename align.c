@@ -1,23 +1,6 @@
 /*
  * align.c
- * 
- * Copyright 2017 Pradeep Gopanapalli <pgopan@Pradeeps-MacBook-Pro.local>
- * 
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
- * 
+ * Copyright 2017 Pradeep Gopanapalli 
  * 
  */
 #include <stdlib.h>
@@ -33,8 +16,8 @@ void* aligned_malloc(size_t required_bytes, size_t alignment)
     {
        return NULL;
     }
-    printf ("memory add %p \n",p1);
     p2 = (void**)(((size_t)(p1) + offset) & ~(alignment - 1));
+    printf ("memory%p aligned%p %lu\n",p1, p2, sizeof(void*));
     p2[-1] = p1;
     return p2;
 }
@@ -48,12 +31,12 @@ int  main (int argc, char *argv[])
 {
     char **endptr;
     if (argc != 2) {
-	  printf("Usage %s <align>\n",__progname);
+	  printf("Usage %s <bytealignment>\n",__progname);
 	  return -1;
     }
-    int *p = aligned_malloc (100, strtol(argv[1], endptr, 10));
+    int align = strtol(argv[1], endptr, 10);
+    int *p = aligned_malloc (100, align);
 
-    printf ("%s: %p\n", argv[1], p);
     aligned_free (p);
     
     return 0;
