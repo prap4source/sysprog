@@ -73,7 +73,7 @@ void main() {
     S_HEAD->next = NULL;
     int i, total_nodes;
     
-    printf ("Enter Number of nodes \n");
+    printf ("Enter Number of nodes %d\n",sizeof(*D_HEAD));
     scanf ("%d", &total_nodes);
     
     for (i = 1; i <= total_nodes; i++) {
